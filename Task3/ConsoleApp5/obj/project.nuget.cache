@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/T/e4epba9aV4UMTkiT86LYCnj3YoJBfqhupNblCH8p/pUIzsZKrlWytkVw1xZhpNi1HOJvWhprk2QMiRMt+ow==",
+  "success": true,
+  "projectFilePath": "D:\\Course\\Task3\\ConsoleApp5\\Vector.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Анатолій\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
