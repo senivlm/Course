@@ -1,5 +1,11 @@
 ﻿namespace Vector
 {
+    enum StartTurn 
+    { 
+        right,
+        down
+    }
+
     class SquereMatrix
     {
         private int[,] matrix;
