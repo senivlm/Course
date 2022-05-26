@@ -42,6 +42,7 @@ namespace Vector
             }
         }
 
+        // SUBTASK 5
         public void ShufleInit()
         {
             bool[] isNumberExist = new bool[arr.Length]; // index = Number ([0] = 1)
@@ -61,7 +62,9 @@ namespace Vector
                 }
             }
         }
+        ////////////////////////////////////////////////
 
+        // SUBTASK 1
         public bool PalindromCheck()
         {
             int j = arr.Length - 1;
@@ -74,7 +77,10 @@ namespace Vector
             }
             return true;
         }
+        ////////////////////////////////////////////////////
 
+
+        //SUBTASK 2
         public void Reverse()
         {
             int temp = 0;
@@ -87,6 +93,13 @@ namespace Vector
             }
         }
 
+        public void SReverse()
+        {
+            Array.Reverse(arr);
+        }
+        /////////////////////////////////////////////////////
+
+        // SUBTASK 3
         public int[] LongestSequence()
         {
             int startOfSequence = 0;
@@ -120,23 +133,48 @@ namespace Vector
 
             return result;
         }
+        ////////////////////////////////////////////////////////////////
 
-        //public Pair[] CalculateFrequency()
-        //{
-        //    Pair[] pairs = new Pair[arr.Length];
 
-        //    for (int i = 0; i < pairs.Length; i++)
-        //    {
-        //        pairs[i] = new Pair();
-        //    }
+        public Pair[] CalculateFrequency()
+        {
+            Pair[] pairs = new Pair[arr.Length];
 
-        //    for (int i = 0; i < arr.Length; i++)
-        //    {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                pairs[i] = new Pair(0,0);
 
-        //    }
+            }
+            int countDifference = 0;
 
-        //    return pairs;
-        //}
+            for (int i = 0; i < arr.Length; i++)
+            {
+                bool isElement = false;
+                for (int j = 0; j < countDifference; j++)
+                {
+                    if(arr[i] == pairs[j].Number)
+                    {
+                        pairs[j].Freq++;
+                        isElement = true;
+                        break;
+                    }
+                }
+                if (!isElement)
+                {
+                    pairs[countDifference].Freq++;
+                    pairs[countDifference].Number = arr[i];
+                    countDifference++;
+                }
+            }
+
+            Pair[] result = new Pair[countDifference];
+            for (int i = 0; i < countDifference; i++)
+            {
+                result[i] = pairs[i];
+            }
+
+            return result;
+        }
 
         public override string ToString()
         {

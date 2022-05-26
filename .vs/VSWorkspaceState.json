@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Task3",
-    "\\Task3\\ConsoleApp5"
+    "\\Task3\\ConsoleApp5",
+    "\\Task4"
   ],
-  "SelectedNode": "\\Task3\\Vector.sln",
+  "SelectedNode": "\\Task3\\ConsoleApp5\\Task3_Vector.cs",
   "PreviewInSolutionExplorer": false
 }

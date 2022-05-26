@@ -128,21 +128,4 @@ namespace Task4
             }
         }
     }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Vector arr = new Vector(10);
-
-            arr.RandInit(0, 10);
-
-            Console.WriteLine(arr);
-            Console.WriteLine();
-
-            arr.StartQuickSort(Element.middle);
-
-            Console.WriteLine(arr);
-        }
-    }
 }
