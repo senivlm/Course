@@ -57,7 +57,6 @@ namespace Vector
         }
         ////////////////////////////////////////////////////
 
-
         //SUBTASK 2
         public void Reverse()
         {
@@ -134,7 +133,6 @@ namespace Vector
             }
         }
         ////////////////////////////////////////////////
-        
 
         public Pair[] CalculateFrequency()
         {

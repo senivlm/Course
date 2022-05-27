@@ -21,7 +21,7 @@ namespace Course.Task2
             int result = 0;
             foreach(Product i in products)
             {
-                result += i.Price;
+                result += (int)i.Price;
             }
             return result;
         }
@@ -40,7 +40,7 @@ namespace Course.Task2
         {
             get
             {
-                if (index > products.Length && index < 0)
+                if (index > products.Length || index < 0)
                     throw new ArgumentOutOfRangeException();
                 return products[index];
             }

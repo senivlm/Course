@@ -13,10 +13,11 @@ namespace Course.Task2
 
         public DairyProducts(string name, float price, int weight, int expirationDate) : base(name, price, weight)
         {
+            if (expirationDate <= 0) throw new ArgumentException("Термiн придатностi меньше 1");
             ExpirationDate = expirationDate;
         }
 
-        public override void ChangePrice(int percent)
+        public override void ChangePrice(float percent)
         {
             percent += expirationDate / 100;
             base.ChangePrice(percent);
@@ -34,6 +35,11 @@ namespace Course.Task2
             string result = "";
             result += base.ToString() + $"\tExpiration Date: {ExpirationDate}";
             return result;
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -30,5 +30,10 @@
 
             return (this.Number == ((Pair)obj).Number && this.Frequency == ((Pair)obj).Frequency);
         }
+
+        public override int GetHashCode()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

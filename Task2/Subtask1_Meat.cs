@@ -33,7 +33,7 @@ namespace Course.Task2
             this.sort = sort;
         }
 
-        public override void ChangePrice(int percent)
+        public override void ChangePrice(float percent)
         {
             switch (category)
             {
@@ -60,6 +60,11 @@ namespace Course.Task2
             string result = "";
             result += base.ToString() + $"\tCategory: {category}\tSort: {sort}";
             return result;
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

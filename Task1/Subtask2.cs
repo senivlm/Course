@@ -40,7 +40,7 @@ namespace Course.Task1
         {
             get
             {
-                if (index > products.Length && index < 0)
+                if (index > products.Length || index < 0)
                     throw new ArgumentOutOfRangeException();
                 return products[index];
             }

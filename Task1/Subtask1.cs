@@ -33,5 +33,10 @@ namespace Course.Task1
         {
             return $"Name: {Name}\tPrice: {Price}\tWeight: {Weight}";
         }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
