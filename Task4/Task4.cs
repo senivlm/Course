@@ -12,7 +12,7 @@ namespace Task4
     class Vector
     {
         private int[] arr;
-
+// неправильний конструктор
         public Vector()
         {
         }
@@ -36,7 +36,7 @@ namespace Task4
                 }
             }
             set
-            {
+            {// теж треба контролювати індекси
                 arr[index] = value;
             }
         }
@@ -104,6 +104,7 @@ namespace Task4
                         break;
                     case Element.end:
                         p = SelectionByLast(endIndex, startIndex, endIndex);
+                        //Це лишнє
                         QuickSort(startIndex, p - 1, element);
                         QuickSort(p + 1, endIndex, element);
                         return;
