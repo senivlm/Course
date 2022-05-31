@@ -1,17 +1,11 @@
 ﻿using System;
-using Task5;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Task5.Vector a = new Task5.Vector(10);
+        Course.Task5.Subtask1.Vector a = new Course.Task5.Subtask1.Vector();
 
-
-        a.RandInit(0, 10);
-        Console.WriteLine(a);
-        a.StartHeapSort();
-
-        Console.WriteLine(a);
+        a.SortFromFile(@"D:\Course\Task5\Array.txt");
     }
 }

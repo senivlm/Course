@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task5
+namespace Course.Task5
 {
     class Vector
     {
