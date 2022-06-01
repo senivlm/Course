@@ -14,6 +14,7 @@ namespace Course.Task2
 
         public Storage(params Product[] products)
         {
+            this.products = new List<Product>();
             this.products.AddRange(products ?? null);
         }
 

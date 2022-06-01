@@ -1,11 +1,15 @@
 ﻿using System;
+using Course.Task2;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Course.Task5.Subtask1.Vector a = new Course.Task5.Subtask1.Vector();
+        Meat a = new Meat("a", 23, 3, Category.Category1, Sort.mutton);
+        DairyProducts b = new DairyProducts("b", 3, 1, 3);
 
-        a.SortFromFile(@"D:\Course\Task5\Array.txt");
+        Storage c = new Storage(a, b);
+
+        c.PrintInfo();
     }
 }
