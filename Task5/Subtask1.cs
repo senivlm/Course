@@ -9,6 +9,7 @@ namespace Course.Task5.Subtask1
 
         public Vector()
         {
+            arr = Array.Empty<int>();
         }
 
         public Vector(int lenght)

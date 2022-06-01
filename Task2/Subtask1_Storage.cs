@@ -5,15 +5,21 @@ namespace Course.Task2
 {
     class Storage
     {
-        private List<Product> products = new List<Product>();
+        private List<Product> products;
 
         public Storage()
         {
+            products = new List<Product>();
         }
 
         public Storage(params Product[] products)
         {
             this.products.AddRange(products ?? null);
+        }
+
+        public void AddInDialog()
+        {
+            UserInterface.AddProductsToStorage(this);
         }
 
         public void AddProduct(Product product)
@@ -48,6 +54,11 @@ namespace Course.Task2
                 }
                 throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public void PrintInfo()
+        {
+            Console.WriteLine(this);
         }
 
         public List<Meat> GetMeats()
