@@ -1,7 +1,8 @@
 ﻿using System;
 
 namespace Task4
-{
+{// Ваш номер у списку 48. 
+    // Претензій до швидкого сортування немає. Так тримати!
     enum Element
     {
         start,
