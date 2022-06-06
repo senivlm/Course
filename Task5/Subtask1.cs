@@ -18,7 +18,7 @@ namespace Course.Task5.Subtask1
         }
 
         public void SortFromFile(string filePath)
-        {
+        {// Конкретний шлях не дозолить переносити програмний продукт!
             string pathToTempArray = @"D:\Course\Task5\TempArray.txt";
 
             if (File.Exists(filePath))
@@ -28,6 +28,7 @@ namespace Course.Task5.Subtask1
                 CreateTempFile(pathToTempArray);
                 using (StreamReader reader = new StreamReader(filePath))
                 {
+                    // у випадку великих файлів ця конструкція не витримає
                     line = new char[reader.ReadLine().Length / 2];
                 }
 
@@ -60,7 +61,7 @@ namespace Course.Task5.Subtask1
         private void MergeFromFile(string filePath)
         {
             if (File.Exists(filePath))
-            {
+            {// не враховані обмеження!
                 int[] array;
                 char[] line1;
                 char[] line2;
