@@ -109,7 +109,7 @@ namespace Course.Task6
         #region WriteToFileMethods
         public void WriteToFile(string filePath)
         {
-            UserInterface.WriteToFile(filePath, this.ToString());
+            FileInteract.WriteToFile(filePath, this.ToString());
         }
 
         public void WriteToFileOneApartment(string filePath, int apartmentNumber)
@@ -127,7 +127,7 @@ namespace Course.Task6
                 result += "\n";
             }
 
-            UserInterface.WriteToFile(filePath, result);
+            FileInteract.WriteToFile(filePath, result);
         }
         #endregion
 

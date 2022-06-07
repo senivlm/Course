@@ -119,7 +119,7 @@ namespace Course.Task6
                 UserInterface.WriteOnConsole("Найдовше слово " + GetLongestWord(i) + "\n");
                 str += i + "\n";
             }
-            UserInterface.WriteToFile(filePath, str);
+            FileInteract.WriteToFile(filePath, str);
         }
     }
 }

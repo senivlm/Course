@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Course.Task6
+namespace Course
 {
     static class UserInterface
     {
@@ -41,15 +41,6 @@ namespace Course.Task6
             } while (true);
 
             return result;
-        }
-
-        public static void WriteToFile(string filePath, string str)
-        {
-            if (!File.Exists(filePath)) using (FileStream fs = File.Create(filePath)) { }
-            using (StreamWriter writer = File.AppendText(filePath))
-            {
-                writer.Write(str);
-            }
         }
 
         public static void WriteOnConsole(string str)
