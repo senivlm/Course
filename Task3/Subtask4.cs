@@ -1,4 +1,4 @@
-﻿namespace Vector
+﻿namespace VectorNamespace
 {
     enum StartTurn 
     { 

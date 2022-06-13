@@ -64,7 +64,7 @@ namespace Course.Task5.Subtask1
                 int[] array;
                 char[] line1;
                 char[] line2;
-                string pathToMainFile = @"D:\Course\Task5\Array.txt";
+                string pathToMainFile = @"../../../Task5/Array.txt";
 
                 using (StreamReader reader = new StreamReader(filePath))
                 {
@@ -87,7 +87,6 @@ namespace Course.Task5.Subtask1
                         temp += i;
                     }
                     FindEnd(reader, ref temp);
-
 
                     array = StringToIntArray(temp);
 

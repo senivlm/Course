@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace Course.Task6
+namespace Course.Task8
 {
     class Subtask1
     {
@@ -20,6 +20,19 @@ namespace Course.Task6
             apartmenCount = default;
             receivingInfo = Array.Empty<DateTime>();
             clientsInfo = Array.Empty<List<ClientInfo>>();
+        }
+
+        public Subtask1(int quarterInfo, int apartmenCount, DateTime[] receivingInfo)
+        {
+            this.quarterInfo = quarterInfo;
+            this.apartmenCount = apartmenCount;
+            this.receivingInfo = new DateTime[receivingInfo.Length];
+            Array.Copy(receivingInfo, this.receivingInfo, receivingInfo.Length);
+            clientsInfo = new List<ClientInfo>[3];
+            for(int i = 0; i < 3; i++)
+            {
+                this.clientsInfo[i] = new List<ClientInfo>();
+            }
         }
 
         public Subtask1(string filePath)
@@ -212,11 +225,20 @@ namespace Course.Task6
             return result;
         }
 
-        public static List<Subtask1> operator -(Subtask1 a, Subtask1 b)
+        public static Subtask1 operator -(Subtask1 a, Subtask1 b)
         {
-            List<Subtask1> result = new List<Subtask1>();
-            result.Add(a);
-            result.Add(b);
+            Subtask1 result = new Subtask1(a.quarterInfo, a.apartmenCount, a.receivingInfo);
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < a.clientsInfo[i].Count; j++)
+                {
+                    foreach (ClientInfo c in b.clientsInfo[i])
+                    {
+                        if (a.clientsInfo[i][j].Equals(c)) continue;
+                        else result.clientsInfo[i].Add(a.clientsInfo[i][j]);
+                    }
+                }
+            }
             return result;
         }
 

@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Course.Task7;
+using System.Linq;
+using System.Net;
+using Course.Task8;
+using VectorNamespace;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Storage a = new Storage(@"../../../Task7/Products.txt");
+        Subtask2 a = new Subtask2(@"../../../Task8/Subtask2/Info.txt");
 
-        ErrorHandler.ChangeErrors("6 06 2022", a);
+        var r = a.GetMostPopularPeriod("129.2.32.43");
+        var d = a.GetNumberOfVisit("129.2.32.43");
+        var s = a.FindMostPopularDay("129.2.32.43");
+        var l = a.GetMostPopularPeriodOnSite();
 
-        Console.WriteLine(a);
+        int i = 0;
     }
 }
