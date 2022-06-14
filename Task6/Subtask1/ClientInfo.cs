@@ -2,7 +2,7 @@
 using System.IO;
 
 namespace Course.Task6
-{
+{//Не побачила перетворення форматів дат
     class ClientInfo
     {
         public int apartmenNumber;
