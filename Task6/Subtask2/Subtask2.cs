@@ -30,10 +30,12 @@ namespace Course.Task6
         public static List<string> SplitTextOnSentence(string text)
         {
             List<string> result = new List<string>();
+            //Розділювачем може бути не тільки крапка
             var str = text.Split('.');
             for(int i = 0; i < str.Length; i++)
-            {
+            {//не завжди спрацює
                 if (str[i] == "\n") continue;
+                //пропусків може бути кілька
                 if (str[i][0] == ' ') str[i] = str[i].Remove(0, 1);
                 if (str[i].Contains("\n")) str[i] = str[i].Replace('\n', ' ');
                 result.Add(str[i] + ".");
