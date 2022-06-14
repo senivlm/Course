@@ -1,0 +1,6 @@
+Incorect sort, |Meat name 14 25 category1 chicke; 07.06.2022 11:52:15
+Incorect product type, |DairyProducts name2 14 25 3; 14.06.2022 11:14:14
+Incorect product type, |DairyProducts name2 14 25 3; 14.06.2022 11:14:55
+Incorect product type, |DairyProducts name2 14 25 3; 14.06.2022 11:16:42
+Incorect product type, |DairyProducts name2 14 25 3; 14.06.2022 11:16:53
+Incorect product type, |DairyProducts name2 14 25 3; 14.06.2022 11:18:01

@@ -1,0 +1,4 @@
+﻿Meat name 14 25 category1 chicken
+Meat name1 14 25 category2 Pork
+Meat name1 14 25 category2 Pork
+DairyProduct name2 14 25 3
