@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 
 namespace Course.Task6
-{
+{//Назви класів краще, щоб були за змістом сутності
     class Subtask1
     {
         public int quarterInfo;
