@@ -215,7 +215,7 @@ namespace Course.Task8
         {
             Console.WriteLine(FindNumbersOfDaysFromLastRemoval());
         }
-
+//неправильно зрозуміли перевантажений оператор!!!!
         public static List<Subtask1> operator +(Subtask1 a, Subtask1 b)
         {
             List<Subtask1> result = new List<Subtask1>();
