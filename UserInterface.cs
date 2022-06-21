@@ -24,10 +24,16 @@ namespace Course
             return result;
         }
 
-        public static string GetStringFromConsole(string message)
+        public static string GetStringFromConsole(string message, int numberOfAttempts = 5)
         {
-            Console.WriteLine(startOfMessage + message);
-            return Console.ReadLine();
+            string result = "";
+            for (int i = 0; i < numberOfAttempts; i++)
+            {
+                Console.WriteLine(startOfMessage + message);
+                result = Console.ReadLine();
+                if (!string.IsNullOrEmpty(result)) break;
+            }
+            return result;
         }
 
         public static int GetIntFromConsole(string message)

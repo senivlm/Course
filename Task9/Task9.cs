@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Course.Task9
 {
-    class mainProgram
+    class Task9
     {
         public static void start()
         {

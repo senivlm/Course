@@ -10,11 +10,25 @@ namespace Course
         public static List<string> ReadFromFile(string filePath)
         {
             List<string> result = new List<string>();
+            try
+            {
+                if (!File.Exists(filePath)) throw new FileNotFoundException($"File not found by {filePath}");
+            }
+            catch (FileNotFoundException e)
+            {
+                while (!File.Exists(filePath))
+                {
+                    Console.WriteLine(e.Message);
+                    filePath = UserInterface.GetStringFromConsole("шлях до файлу");
+                }
+            }
+
             using (StreamReader reader = new StreamReader(filePath))
             {
-                while(!reader.EndOfStream)
+                while (!reader.EndOfStream)
                     result.Add(reader.ReadLine());
             }
+
             return result;
         }
 

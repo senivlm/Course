@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using Course.Task5.Subtask1;
 using Course.Task9;
+using Course.Task10;
 using Course;
 
 class Program
@@ -29,6 +30,7 @@ class Program
         //var l = a.Intersect(b);
         //var z = a.Union(b);
 
-        mainProgram.start();
+        Task10.start();
+        //mainProgram.start();
     }
 }
