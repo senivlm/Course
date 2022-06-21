@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Course.Task7
 {
     class ErrorHandler
-    {
+    {молодець, що розділив роздрук і опрацювання!
         static private string errorLogPath = @"../../../Task7/LogFolder/ErrorLog.txt";
         static private string SolvedError = @"../../../Task7/LogFolder/SolvedError.txt";
 
