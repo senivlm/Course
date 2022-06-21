@@ -29,11 +29,6 @@ class Program
         //var l = a.Intersect(b);
         //var z = a.Union(b);
 
-        string a = @"../../../Task9/Prices.txt";
-        string b = @"../../../Task9/Menu.txt";
-        var s = new CafeInfo(a, b);
-        var c = s.GetPriceOfIngridients(Currency.Dollar);
-        var d = s.GetWeightOfIngridients();
-        s.WriteInfoToFile(@"../../../Task9/result.txt", Currency.Dollar);
+        mainProgram.start();
     }
 }

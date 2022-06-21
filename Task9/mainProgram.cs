@@ -8,7 +8,7 @@ namespace Course.Task9
 {
     class mainProgram
     {
-        public void start()
+        public static void start()
         {
             string a = @"../../../Task9/Prices.txt";
             string b = @"../../../Task9/Menu.txt";
