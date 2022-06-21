@@ -97,7 +97,7 @@ namespace Course.Task7
                     if (temp > date) errors.Add(str[0]);
                 }
             }
-
+//Повернути результат пошуку, а не роздруковувати. роздрук мав би бути в іншому файлі
             for (int i = 0; i < errors.Count; i++)
             {
                 UserInterface.WriteOnConsole((i + 1) + ". " + errors[i]);
