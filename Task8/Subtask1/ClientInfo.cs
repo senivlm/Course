@@ -53,5 +53,10 @@ namespace Course.Task8
             string result = String.Format("{0,-15} {1,-20} {2,-30} {3,-30}", apartmenNumber, surname, output, input);
             return result;
         }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,18 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Course
 {
     class FileInteract
     {
-        public static string ReadFromFile(string filePath)
+        public static List<string> ReadFromFile(string filePath)
         {
-            string result = "";
+            List<string> result = new List<string>();
             using (StreamReader reader = new StreamReader(filePath))
             {
-                result += reader.ReadLine() + "\n";
+                while(!reader.EndOfStream)
+                    result.Add(reader.ReadLine());
             }
-            return result; 
+            return result;
         }
 
         public static void WriteToFile(string filePath, string str)
@@ -27,6 +30,48 @@ namespace Course
         public static void CreateFile(string filePath)
         {
             using (FileStream fs = File.Create(filePath)) { }
+        }
+
+        public static void DeleteFile(string filePath)
+        {
+            File.Delete(filePath);
+        }
+
+        public static string FindEndOfWord(StreamReader reader)
+        {
+            StringBuilder result = new StringBuilder();
+            result.Append((char)reader.Read());
+            while (!reader.EndOfStream)
+            {
+                if (result[result.Length - 1] != 32)
+                {
+                    char temp = (char)reader.Read();
+                    if (temp == '\n') break;
+                    result.Append(temp);
+                }
+                else break;
+            }
+            return result.ToString();
+        }
+
+        public static string FindEndOfWord(StreamReader reader, string line)
+        {
+            StringBuilder result = new StringBuilder(line);
+            if (line.Length == 0)
+            {
+                result.Append((char)reader.Read());
+            }
+            while (!reader.EndOfStream)
+            {
+                if (result[result.Length - 1] != 32)
+                {
+                    char temp = (char)reader.Read();
+                    if (temp == '\n') break;
+                    result.Append(temp);
+                }
+                else break;
+            }
+            return result.ToString();
         }
     }
 }

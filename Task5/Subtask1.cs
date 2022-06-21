@@ -1,11 +1,15 @@
 ﻿using System;
 using System.IO;
+using Course;
+using System.Linq;
 
 namespace Course.Task5.Subtask1
 {
     class Vector
     {
         private int[] arr;
+        private readonly string pathToTempArray = @"../../../Task5/TempArray.txt";
+        private readonly string pathToTempArray1 = @"../../../Task5/TempArray1.txt";
 
         public Vector()
         {
@@ -19,16 +23,17 @@ namespace Course.Task5.Subtask1
 
         public void SortFromFile(string filePath)
         {
-            string pathToTempArray = @"D:\Course\Task5\TempArray.txt";
-
             if (File.Exists(filePath))
             {
                 int[] array;
                 char[] line;
-                CreateTempFile(pathToTempArray);
+                FileInteract.CreateFile(pathToTempArray);
+                FileInteract.CreateFile(pathToTempArray1);
+
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    line = new char[reader.ReadLine().Length / 2];
+                    int elementsInFile = CountElements(reader);
+                    line = new char[elementsInFile / 2];
                 }
 
                 using (StreamReader reader = new StreamReader(filePath))
@@ -37,132 +42,117 @@ namespace Course.Task5.Subtask1
 
                     string temp = new string(line);
 
-                    FindEnd(reader, ref temp);
+                    temp = FileInteract.FindEndOfWord(reader, temp);
 
                     array = StringToIntArray(temp);
 
                     SplitMergeSort(array);
 
-                    WriteToFile(pathToTempArray, array, true);
+                    WriteToFile(pathToTempArray, array);
 
                     array = StringToIntArray(reader.ReadLine());
 
                     SplitMergeSort(array);
 
-                    WriteToFile(pathToTempArray, array, true);
+                    WriteToFile(pathToTempArray1, array);
                 }
             }
             else throw new ArgumentException("Wrong path to file");
 
-            MergeFromFile(pathToTempArray);
+            MergeFromFile(filePath);
+        }
+
+        private int CountElements(StreamReader reader)
+        {
+            int result = 0;
+            while (!reader.EndOfStream)
+            {
+                if ((char)reader.Peek() == '\n') break;
+                reader.Read();
+                result++;
+            }
+            return result;
         }
 
         private void MergeFromFile(string filePath)
         {
             if (File.Exists(filePath))
             {
-                int[] array;
-                char[] line1;
-                char[] line2;
-                string pathToMainFile = @"../../../Task5/Array.txt";
+                StreamReader reader = new StreamReader(pathToTempArray);
+                StreamReader reader1 = new StreamReader(pathToTempArray1);
+                FileInteract.CreateFile(filePath);
 
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    line1 = new char[reader.ReadLine().Length / 2];
-                    line2 = new char[reader.ReadLine().Length / 2];
-                }
+                int elementsInFile = CountElements(reader);
+                char[] charArray = new char[elementsInFile / 2];
+                reader.DiscardBufferedData();
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                reader.Read(charArray, 0, charArray.Length);
+                string array = new string(charArray + " ");
 
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    reader.Read(line1, 0, line1.Length);
-                    string temp = new string(line1);
-                    FindEnd(reader, ref temp);
+                array = FileInteract.FindEndOfWord(reader, array);
+                reader1.Read(charArray, 0, charArray.Length);
+                foreach(char i in charArray)
+                    array += i;
+                array = FileInteract.FindEndOfWord(reader1, array);
+                WriteToFile(filePath, Merge(StringToIntArray(array)));
 
-                    reader.ReadLine();
-                    reader.Read(line2, 0, line2.Length);
-
-                    
-                    foreach (char i in line2)
-                    {
-                        temp += i;
-                    }
-                    FindEnd(reader, ref temp);
-
-                    array = StringToIntArray(temp);
-
-                    SplitMergeSort(array);
-                    CreateTempFile(pathToMainFile);
-                    WriteToFile(pathToMainFile, array, false);
-                }
-
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    reader.Read(line1, 0, line1.Length);
-                    FindEnd(reader, new string(line1));
-                    string temp = reader.ReadLine();
-                    temp += " ";
-
-                    reader.Read(line2, 0, line2.Length);
-                    FindEnd(reader, new string(line2));
-                    temp += reader.ReadLine();
-
-                    array = StringToIntArray(temp);
-
-                    Merge(array, 0, array.Length / 2, array.Length);
-                    WriteToFile(pathToMainFile, array, false);
-                }
-
-                DeleteTempFile(filePath);
+                array = reader.ReadLine();
+                array += reader1.ReadLine();
+                WriteToFile(filePath, Merge(StringToIntArray(array)));
+                reader.Close();
+                reader1.Close();
             }
             else throw new ArgumentException("Wrong path to file");
         }
 
-        private void FindEnd(StreamReader reader, ref string line)
-        {
-            while (true)
-            {
-                if (line[line.Length - 1] != 32)
-                {
-                    line += (char)reader.Read();
-                }
-                else break;
-            }
-        }
+        //private int[] GetArray(string filePath, int step)
+        //{
+        //    char[] line1;
+        //    char[] line2;
+        //    string temp = "";
+        //    int i = 0, j = 0;
 
-        private void FindEnd(StreamReader reader, string line)
-        {
-            while (true)
-            {
-                if (line[line.Length - 1] != 32)
-                {
-                    line += (char)reader.Read();
-                }
-                else break;
-            }
-        }
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        int elementsInFile = CountElements(reader);
+        //        line1 = new char[elementsInFile / 2];
+        //        reader.ReadLine();
+        //        elementsInFile = CountElements(reader);
+        //        line2 = new char[elementsInFile / 2];
+        //    }
 
-        private void CreateTempFile(string filePath)
-        {
-            using (FileStream fs = File.Create(filePath)) { }
-        }
+        //    using (StreamReader reader = new StreamReader(filePath))
+        //    {
+        //        do
+        //        {
+        //            reader.Read(line1, 0, line1.Length);
+        //        } while (i++ != step);
+        //        temp = new string(line1);
+        //        temp = FileInteract.FindEndOfWord(reader, temp);
+        //        reader.ReadLine();
+        //        do
+        //        {
+        //            reader.Read(line2, 0, line2.Length);
+        //        } while (j++ != step);
+        //        foreach (char k in line2)
+        //        {
+        //            temp += k;
+        //        }
+        //        temp = FileInteract.FindEndOfWord(reader, temp);
+        //    }
+        //    return StringToIntArray(temp);
+        //}
 
-        private void DeleteTempFile(string filePath)
-        {
-            File.Delete(filePath);
-        }
-
-        private void WriteToFile(string filePath, int[] array, bool isNewString)
+        private void WriteToFile(string filePath, int[] array)
         {
             if (File.Exists(filePath))
             {
                 string text = "";
-                for(int i = 0; i < array.Length - 1; i++)
+                for (int i = 0; i < array.Length - 1; i++)
                 {
                     text += array[i] + " ";
                 }
-                text += array[array.Length - 1];
-                if (isNewString) text += "\n";
-                else text += " ";
+                text += array[array.Length - 1] + " ";
                 using (StreamWriter writer = File.AppendText(filePath))
                 {
                     writer.Write(text);
@@ -191,6 +181,32 @@ namespace Course.Task5.Subtask1
 
             for (int m = 0; m < temp.Length; m++)
                 arr[m + left] = temp[m];
+        }
+
+        private int[] Merge(int[] arr)
+        {
+            int i = 0, j = arr.Length / 2, k = 0;
+            int middle = j, right = arr.Length;
+            int[] temp = new int[right];
+            while (i < middle && j < right)
+            {
+                if (arr[i] < arr[j])
+                    temp[k++] = arr[i++];
+                else
+                    temp[k++] = arr[j++];
+            }
+
+            if (i == middle)
+                for (; j < right; j++)
+                    temp[k++] = arr[j];
+            else
+                while (i < middle)
+                    temp[k++] = arr[i++];
+
+            for (int m = 0; m < temp.Length; m++)
+                arr[m] = temp[m];
+
+            return arr;
         }
 
         private void Split(int[] arr, int firstIndex, int lastIndex)

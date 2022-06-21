@@ -43,6 +43,19 @@ namespace Course
             return result;
         }
 
+        public static float GetFloatFromConsole(string message, int numberOfAttempts)
+        {
+            float result = 0;
+            for(int i = 0; i < numberOfAttempts; i++)
+            {
+                Console.Write(startOfMessage + message + " ");
+                if (float.TryParse(Console.ReadLine(), out result))
+                    break;
+            }
+
+            return result;
+        }
+
         public static void WriteOnConsole(string str)
         {
             Console.WriteLine(str);

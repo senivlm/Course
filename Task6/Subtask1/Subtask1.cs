@@ -92,7 +92,6 @@ namespace Course.Task6
                                 if (line == "" || line == null) break;
                                 clientsInfo[i].Add(new ClientInfo(line));
                             }
-                            int a = 0;
                         }
                     }
                     catch (ArgumentException e)

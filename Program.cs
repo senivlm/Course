@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using Course.Task8;
-using VectorNamespace;
+using Course.Task5.Subtask1;
+using Course.Task9;
+using Course;
 
 class Program
 {
@@ -17,18 +18,22 @@ class Program
         //var s = a.FindMostPopularDay("129.2.32.43");
         //var l = a.GetMostPopularPeriodOnSite();
 
-        Meat c = new Meat("Name1", 14, 25, Category.Category2, Sort.Pork);
-        Meat d = new Meat("Name1", 14, 25, Category.Category2, Sort.Pork);
-        Meat v = new Meat("Name4", 13, 2, Category.Category1, Sort.Mutton);
+        //Meat c = new Meat("Name1", 14, 25, Category.Category2, Sort.Pork);
+        //Meat d = new Meat("Name1", 14, 25, Category.Category2, Sort.Pork);
+        //Meat v = new Meat("Name4", 13, 2, Category.Category1, Sort.Mutton);
 
-        Subtask3 a = new Subtask3(@"../../../Task8/Subtask3/Products.txt");
-        Subtask3 b = new Subtask3(c, v, d);
+        //Subtask3 a = new Subtask3(@"../../../Task8/Subtask3/Products.txt");
+        //Subtask3 b = new Subtask3(c, v, d);
 
-        var k = a.Except(b);
-        var l = a.Intersect(b);
-        var z = a.Union(b);
+        //var k = a.Except(b);
+        //var l = a.Intersect(b);
+        //var z = a.Union(b);
 
-
-        int i = 0;
+        string a = @"../../../Task9/Prices.txt";
+        string b = @"../../../Task9/Menu.txt";
+        var s = new CafeInfo(a, b);
+        var c = s.GetPriceOfIngridients(Currency.Dollar);
+        var d = s.GetWeightOfIngridients();
+        s.WriteInfoToFile(@"../../../Task9/result.txt", Currency.Dollar);
     }
 }

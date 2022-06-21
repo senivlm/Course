@@ -1,0 +1,4 @@
+﻿Steak
+Meat,800
+Bread,400
+Onion,100
