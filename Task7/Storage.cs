@@ -171,11 +171,6 @@ namespace Course.Task7
             }
         }
 
-        public void PrintInfo()
-        {
-            Console.WriteLine(this);
-        }
-
         public List<Meat> GetMeats()
         {
             List<Meat> result = new List<Meat>();

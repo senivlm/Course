@@ -1,23 +1,32 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Course.Task10
 {
     enum FillTypes
     {
-        vertically,
-        spirally,
-        diagonaly,
-        exeption
+        Vertically,
+        Diagonaly,
+        Exeption
     }
 
-    class Matrix
+    class Matrix : IEnumerable<int>
     {
         private int[,] matrix;
         private FillTypes fillType;
 
+        #region Constructors
         public Matrix()
         {
             matrix = null;
-            fillType = FillTypes.exeption;
+            fillType = FillTypes.Exeption;
+        }
+
+        public Matrix(int[,] matrix)
+        {
+            Array.Copy(matrix, this.matrix, matrix.Length);
+            fillType = FillTypes.Exeption;
         }
 
         public Matrix(int lenght, int hight, FillTypes fillType)
@@ -25,25 +34,24 @@ namespace Course.Task10
             matrix = new int[hight, lenght];
             this.fillType = fillType;
         }
+        #endregion
 
         public void FillMatrix()
         {
             switch (fillType)
             {
-                case FillTypes.vertically:
+                case FillTypes.Vertically:
                     VerticalFill();
                     break;
-                case FillTypes.spirally:
-                    SpirallFill();
-                    break;
-                case FillTypes.diagonaly:
+                case FillTypes.Diagonaly:
                     DiagonalyFill();
                     break;
-                case FillTypes.exeption:
+                case FillTypes.Exeption:
                     throw new ArgumentException();
             }
         }
 
+        #region Filling
         private void VerticalFill()
         {
             int currentNumber = 1;
@@ -61,54 +69,6 @@ namespace Course.Task10
                         matrix[j, i] = currentNumber;
                         currentNumber++;
                     }
-            }
-        }
-
-        private void SpirallFill()
-        {
-            int currentNumber = 1;
-            int currentHight = matrix.GetLength(0), currentLenght = matrix.GetLength(1);
-            int i = -1, j = 0;
-            int step = 0;
-            while (currentNumber <= matrix.Length)
-            {
-                if (step % 2 != 0)
-                {
-                    if (j == currentLenght)
-                    {
-                        for (int k = 0; k < currentLenght - 1; k++)
-                        {
-                            matrix[i, --j] = currentNumber++;
-                        }
-                    }
-                    else
-                    {
-                        for (int k = 0; k < currentLenght - 1; k++)
-                        {
-                            matrix[i, ++j] = currentNumber++;
-                        }
-                    }
-                    currentLenght--;
-                }
-                else
-                {
-                    if (i == currentHight)
-                    {
-                        for (int k = 0; k < currentHight; k++)
-                        {
-                            matrix[--i, j] = currentNumber++;
-                        }
-                    }
-                    else
-                    {
-                        for (int k = 0; k < currentHight; k++)
-                        {
-                            matrix[++i, j] = currentNumber++;
-                        }
-                    }
-                    currentHight--;
-                }
-                step++;
             }
         }
 
@@ -156,6 +116,80 @@ namespace Course.Task10
                 }
             }
         }
+        #endregion
+
+        #region IEnumerators
+        // Vertical snake
+        //public IEnumerator<int> GetEnumerator()
+        //{
+        //    for (int i = 0; i < matrix.GetLength(1); i++)
+        //    {
+        //        if (i % 2 == 0)
+        //            for (int j = 0; j < matrix.GetLength(0); j++)
+        //            {
+        //                yield return matrix[j, i];
+        //            }
+        //        else
+        //            for (int j = matrix.GetLength(0) - 1; j >= 0; j--)
+        //            {
+        //                yield return matrix[j, i];
+        //            }
+        //    }
+        //}
+
+        // Diagonaly
+        public IEnumerator<int> GetEnumerator()
+        {
+            int lineLenght = matrix.GetLength(0) * 2 - 1;
+            int i = -1, j = 0;
+
+            for (int k = 0; k < lineLenght; k++)
+            {
+                if (k % 2 != 0)
+                {
+                    int steps = k;
+                    if (k > 3)
+                    {
+                        i++;
+                        steps = lineLenght - k - 1;
+                    }
+                    else
+                        j++;
+
+                    yield return matrix[i, j];
+                    for (int h = 0; h < steps; h++)
+                    {
+                        i++;
+                        j--;
+                        yield return matrix[i, j];
+                    }
+                }
+                else
+                {
+                    int steps = k;
+                    if (k > 3)
+                    {
+                        j++;
+                        steps = lineLenght - k - 1;
+                    }
+                    else i++;
+
+                    yield return matrix[i, j];
+                    for (int h = 0; h < steps; h++)
+                    {
+                        i--;
+                        j++;
+                        yield return matrix[i, j];
+                    }
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return matrix.GetEnumerator();
+        }
+        #endregion
 
         public override string ToString()
         {

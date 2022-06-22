@@ -15,6 +15,16 @@ namespace Course.Task10
             Translator translator = new Translator(pathToText, pathToDictionary);
             string changedText = translator.ChangeWords();
             FileInteract.WriteToFile(@"../../../Task10/Subtask1/Result.txt", changedText);
+
+            Matrix matrix = new Matrix(4, 4, FillTypes.Diagonaly);
+            matrix.FillMatrix();
+
+            Console.WriteLine(matrix);
+
+            foreach(int i in matrix)
+            {
+                Console.WriteLine(i);
+            }
         }
     }
 }
