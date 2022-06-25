@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Course.Task7
+namespace Course.Task11
 {
     class ErrorHandler
     {
-        static private string errorLogPath = @"../../../Task7/LogFolder/ErrorLog.txt";
-        static private string SolvedError = @"../../../Task7/LogFolder/SolvedError.txt";
+        static private string errorLogPath = @"../../../Task11/Storage/LogFolder/ErrorLog.txt";
+        static private string SolvedError = @"../../../Task11/Storage/LogFolder/SolvedError.txt";
 
         static public void WriteError(Exception e, string errorLine)
         {
@@ -22,6 +22,11 @@ namespace Course.Task7
         {
             string message = $"{errorLine}; {DateTime.Now}\n";
             FileInteract.WriteToFile(SolvedError, message);
+        }
+
+        static public void PrintErrors()
+        {
+            UserInterface.WriteListStringOnConsole(GetAllErrors());
         }
 
         static public void ChangeErrors(string dateString, Storage storage)
@@ -79,7 +84,7 @@ namespace Course.Task7
                 date = new DateTime(year, month, day);
                 break;
             }
-            SolveErrors(FindErrors(date, storage), storage);
+            SolveErrors(FindErrors(date), storage);
         }
 
         static private void SolveErrors(List<string> errors, Storage storage)
@@ -111,7 +116,25 @@ namespace Course.Task7
             }
         }
 
-        static private List<string> FindErrors(DateTime date, Storage storage)
+        static private List<string> GetAllErrors()
+        {
+            List<string> errors = new List<string>();
+            string line = "";
+            string[] str;
+            using (StreamReader reader = new StreamReader(errorLogPath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    str = line.Split(';');
+                    errors.Add(str[0] + "\n");
+                }
+            }
+
+            return errors;
+        }
+
+        static private List<string> FindErrors(DateTime date)
         {
             List<string> errors = new List<string>();
             string line = "";

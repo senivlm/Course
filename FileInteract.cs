@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Course
 {
-    class FileInteract
+    static class FileInteract
     {
         public static List<string> ReadFromFile(string filePath)
         {

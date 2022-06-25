@@ -1,0 +1,2 @@
+﻿Meat Meat 14 25 category1 chicken
+DairyProduct DairyProduct 13 5 2

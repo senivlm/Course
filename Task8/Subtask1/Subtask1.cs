@@ -35,6 +35,16 @@ namespace Course.Task8
             }
         }
 
+        public Subtask1(int quarterInfo, int apartmenCount, DateTime[] receivingInfo , List<ClientInfo>[] clientsInfo)
+        {
+            this.quarterInfo = quarterInfo;
+            this.apartmenCount = apartmenCount;
+            this.receivingInfo = new DateTime[receivingInfo.Length];
+            Array.Copy(receivingInfo, this.receivingInfo, receivingInfo.Length);
+            this.clientsInfo = new List<ClientInfo>[clientsInfo.Length];
+            Array.Copy(clientsInfo, this.clientsInfo, clientsInfo.Length);
+        }
+
         public Subtask1(string filePath)
         {
             if (File.Exists(filePath))
@@ -216,11 +226,20 @@ namespace Course.Task8
             Console.WriteLine(FindNumbersOfDaysFromLastRemoval());
         }
 
-        public static List<Subtask1> operator +(Subtask1 a, Subtask1 b)
+        public static Subtask1 operator +(Subtask1 a, Subtask1 b)
         {
-            List<Subtask1> result = new List<Subtask1>();
-            result.Add(a);
-            result.Add(b);
+            int quarterInfo = a.quarterInfo + b.quarterInfo;
+            int apartmentCount = a.apartmenCount + b.apartmenCount;
+
+            DateTime[] receivingInfo = new DateTime[a.receivingInfo.Length + b.receivingInfo.Length];
+            Array.Copy(a.receivingInfo, receivingInfo, a.receivingInfo.Length);
+            Array.Copy(b.receivingInfo, 0, receivingInfo, a.receivingInfo.Length, b.receivingInfo.Length);
+
+            List<ClientInfo>[] clientsInfo = new List<ClientInfo>[a.clientsInfo.Length + b.clientsInfo.Length];
+            Array.Copy(a.clientsInfo, clientsInfo, a.clientsInfo.Length);
+            Array.Copy(b.clientsInfo, 0, clientsInfo, a.clientsInfo.Length, b.clientsInfo.Length);
+
+            Subtask1 result = new Subtask1(quarterInfo, apartmentCount, receivingInfo, clientsInfo);
             return result;
         }
 
