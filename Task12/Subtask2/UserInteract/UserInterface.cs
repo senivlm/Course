@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Course
+namespace Course.Task12.Subtask2
 {
     static class UserInterface
     {
@@ -22,31 +22,6 @@ namespace Course
             } while (result.Length != numberOfParts);
 
             return result;
-        }
-
-        public static string GetFilePath()
-        {
-            while (true)
-            {
-                string result = "";
-                Console.WriteLine("Якщо файл знаходиться у данiй папкi натиснiть 1, в iншому випадку 2, для виходу iншу цифру");
-                int userInput = GetIntFromConsole("номер дiї");
-                switch (userInput)
-                {
-                    case 1:
-                        result = "../../../" + GetStringFromConsole("назву файлу");
-                        break;
-                    case 2:
-                        result = GetStringFromConsole("шлях до файлу");
-                        break;
-                    default:
-                        return result;
-                }
-                if (File.Exists(result))
-                {
-                    return result;
-                }
-            }
         }
 
         public static DateTime GetDateTimeFromConsole(string message, int numberOfAttempts = 5)
@@ -73,13 +48,38 @@ namespace Course
             return result;
         }
 
+        public static string GetFilePath()
+        {
+            while (true)
+            {
+                string result = "";
+                Console.WriteLine("Якщо файл знаходиться у даній папкі натисніть 1, в іншому випадку 2, для виходу іншу цифру");
+                int userInput = GetIntFromConsole("номер дії");
+                switch (userInput)
+                {
+                    case 1:
+                        result = "../../../" + GetStringFromConsole("назву файлу");
+                        break;
+                    case 2:
+                        result = GetStringFromConsole("шлях до файлу");
+                        break;
+                    default:
+                        return result;
+                }
+                if (File.Exists(result))
+                {
+                    return result;
+                }
+            }
+        }
+
         public static int GetIntFromConsole(string message)
         {
             int result = 0;
             do
             {
                 Console.WriteLine(startOfMessage + message);
-                if(int.TryParse(Console.ReadLine(), out result)) 
+                if (int.TryParse(Console.ReadLine(), out result))
                     break;
             } while (true);
 
@@ -89,7 +89,7 @@ namespace Course
         public static float GetFloatFromConsole(string message, int numberOfAttempts)
         {
             float result = 0;
-            for(int i = 0; i < numberOfAttempts; i++)
+            for (int i = 0; i < numberOfAttempts; i++)
             {
                 Console.Write(startOfMessage + message + " ");
                 if (float.TryParse(Console.ReadLine(), out result))
@@ -101,7 +101,7 @@ namespace Course
 
         public static void WriteListOnConsole<T>(List<T> list)
         {
-            foreach (var line in list)
+            foreach(T line in list)
                 Console.WriteLine(line.ToString());
         }
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Course
+namespace Course.Task12
 {
     static class UserInterface
     {
@@ -21,6 +21,18 @@ namespace Course
                 result = Console.ReadLine().Split();
             } while (result.Length != numberOfParts);
 
+            return result;
+        }
+
+        public static string GetStringFromConsole(string message, int numberOfAttempts = 5)
+        {
+            string result = "";
+            for (int i = 0; i < numberOfAttempts; i++)
+            {
+                Console.WriteLine(startOfMessage + message);
+                result = Console.ReadLine();
+                if (!string.IsNullOrEmpty(result)) break;
+            }
             return result;
         }
 
@@ -49,37 +61,13 @@ namespace Course
             }
         }
 
-        public static DateTime GetDateTimeFromConsole(string message, int numberOfAttempts = 5)
-        {
-            DateTime result = default;
-            for (int i = 0; i < numberOfAttempts; i++)
-            {
-                Console.WriteLine(startOfMessage + message);
-                var str = Console.ReadLine();
-                if (DateTime.TryParse(str, out result)) break;
-            }
-            return result;
-        }
-
-        public static string GetStringFromConsole(string message, int numberOfAttempts = 5)
-        {
-            string result = "";
-            for (int i = 0; i < numberOfAttempts; i++)
-            {
-                Console.WriteLine(startOfMessage + message);
-                result = Console.ReadLine();
-                if (!string.IsNullOrEmpty(result)) break;
-            }
-            return result;
-        }
-
         public static int GetIntFromConsole(string message)
         {
             int result = 0;
             do
             {
                 Console.WriteLine(startOfMessage + message);
-                if(int.TryParse(Console.ReadLine(), out result)) 
+                if (int.TryParse(Console.ReadLine(), out result))
                     break;
             } while (true);
 
@@ -89,7 +77,7 @@ namespace Course
         public static float GetFloatFromConsole(string message, int numberOfAttempts)
         {
             float result = 0;
-            for(int i = 0; i < numberOfAttempts; i++)
+            for (int i = 0; i < numberOfAttempts; i++)
             {
                 Console.Write(startOfMessage + message + " ");
                 if (float.TryParse(Console.ReadLine(), out result))
@@ -99,10 +87,10 @@ namespace Course
             return result;
         }
 
-        public static void WriteListOnConsole<T>(List<T> list)
+        public static void WriteListStringOnConsole(List<string> list)
         {
-            foreach (var line in list)
-                Console.WriteLine(line.ToString());
+            foreach(string line in list)
+                Console.WriteLine(line);
         }
 
         public static void WriteOnConsole(string str)
