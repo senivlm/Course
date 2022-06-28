@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Course.Task10
-{
+{// тут правильно
     enum FillTypes
     {
         Vertically,
