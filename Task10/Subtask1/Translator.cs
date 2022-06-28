@@ -12,7 +12,7 @@ namespace Course.Task10
         private string pathToDictionary;
         private readonly int countVarieble = 3;
         private Dictionary<string, string> dictionary;
-
+// Властивості пишуть з великої літери
         public string text { get; private set; }
 
         public Translator(string pathToText, string pathToDictionary, Dictionary<string, string> dictionary, string text)
@@ -22,7 +22,7 @@ namespace Course.Task10
             this.dictionary = dictionary;
             this.text = text;
         }
-
+// У методі розв'язуються кілька проблем. Їх слід розділяти в окремі методи
         public Translator(string pathToText, string pathToDictionary)
         {
             this.pathToText = pathToText;
@@ -128,7 +128,7 @@ namespace Course.Task10
 
             return result;
         }
-
+// У цій задачі краще було працювати з StringBuilder
         private string ChangeWord(string word)
         {
             string result = "";
