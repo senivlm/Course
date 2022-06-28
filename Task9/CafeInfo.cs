@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Course.Task9
-{
+{// не дуже подобається проєктування. Клас, як збірна солянка
     class CafeInfo
     {
         public Dictionary<string, Ingridient> ingridients { get; }
