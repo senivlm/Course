@@ -13,14 +13,14 @@ namespace Course.Task10
         private readonly int countVarieble = 3;
         private Dictionary<string, string> dictionary;
 
-        public string text { get; private set; }
+        public string Text { get; private set; }
 
         public Translator(string pathToText, string pathToDictionary, Dictionary<string, string> dictionary, string text)
         {
             this.pathToText = pathToText;
             this.pathToDictionary = pathToDictionary;
             this.dictionary = dictionary;
-            this.text = text;
+            this.Text = text;
         }
 
         public Translator(string pathToText, string pathToDictionary)
@@ -28,13 +28,22 @@ namespace Course.Task10
             this.pathToText = pathToText;
             this.pathToDictionary = pathToDictionary;
             dictionary = new Dictionary<string, string>();
-            text = "";
+            Text = "";
 
+            AddToTextFromFile(pathToText);
+            AddToDictionaryFromFile(pathToDictionary);
+        }
+
+        public void AddToTextFromFile(string pathToText)
+        {
             List<string> stringList = FileInteract.ReadFromFile(pathToText);
             foreach (string line in stringList)
                 AddText(line);
+        }
 
-            stringList = FileInteract.ReadFromFile(pathToDictionary);
+        public void AddToDictionaryFromFile(string pathToDictionary)
+        {
+            List<string> stringList = FileInteract.ReadFromFile(pathToText);
             foreach (string line in stringList)
             {
                 try
@@ -50,7 +59,7 @@ namespace Course.Task10
 
         public void AddText(string line)
         {
-            text += line;
+            Text += line;
         }
 
         public void AddPairToDictionary(string line)
@@ -64,7 +73,7 @@ namespace Course.Task10
         {
             var spacesCounter = CountSpaces();
             StringBuilder result = new StringBuilder();
-            var splitedText = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var splitedText = Text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < splitedText.Length; i++)
             {
@@ -73,16 +82,11 @@ namespace Course.Task10
                 try
                 {
                     tempWord = ChangeWordWithPunctuation(splitedText[i]);
-                    //if (char.IsPunctuation(splitedText[i][splitedText[i].Length - 1]))
-                    //    tempWord = ChangeWord(splitedText[i][0..^1]) + splitedText[i][splitedText[i].Length - 1];
-                    //else tempWord = ChangeWord(splitedText[i]);
                 }
                 catch (WordDoesntFoundExeption e)
                 {
                     AddToDictionary(e.Message);
                     tempWord = ChangeWordWithPunctuation(splitedText[i]);
-                    //tempWord = ChangeWord(splitedText[i]);
-                    //if (punctuation != default) tempWord += punctuation;
                 }
                 result.Append(tempWord);
 
@@ -102,7 +106,7 @@ namespace Course.Task10
         {
             List<int> result = new List<int>();
             int counter = 0;
-            foreach (char symbol in text)
+            foreach (char symbol in Text)
             {
                 if (char.IsWhiteSpace(symbol)) counter++;
                 else if (counter != 0)
@@ -121,12 +125,12 @@ namespace Course.Task10
             else if (char.IsLetterOrDigit(word[word.Length - 1]))
                 return ChangeWord(word);
 
-            string result = "";
+            StringBuilder result = new();
             char punctuation = word[word.Length - 1];
-            result = ChangeWordWithPunctuation(word[0..^1]);
-            result += punctuation;
+            result.Append(ChangeWordWithPunctuation(word[0..^1]));
+            result.Append(punctuation);
 
-            return result;
+            return result.ToString();
         }
 
         private string ChangeWord(string word)

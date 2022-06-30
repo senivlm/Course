@@ -26,7 +26,7 @@ namespace Course.Task12.Subtask2
 
         static public void PrintErrors()
         {
-            UserInterface.WriteListStringOnConsole(GetAllErrors());
+            UserInterface.WriteListOnConsole(GetAllErrors());
         }
 
         static public void ChangeErrors(string dateString, Storage storage)
