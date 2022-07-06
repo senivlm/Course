@@ -59,7 +59,7 @@ namespace Course.Task12
             }
 
             using (StreamReader reader = new StreamReader(filePath))
-            {
+            {//Домовлялись, що винесем це в сервіс!!!
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
