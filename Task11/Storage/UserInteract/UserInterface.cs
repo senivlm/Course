@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Course.Task11
 {
     static class UserInterface
-    {
+    {// Сподобалась ідея. Покажіть, будь ласка, клас на занятті.
         private static string startOfMessage = "Введiть наступну iнформацiю: ";
 
         public static string[] GetSplitedStringFromConsole(int numberOfParts, string message)
