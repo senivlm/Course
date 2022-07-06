@@ -8,7 +8,7 @@ namespace Course.Task12
     class Storage
     {
         private List<Product> products;
-
+// Чому делегат не ззовні класу.
         public delegate void OutOfExpirationTime(string message);
         public event OutOfExpirationTime OutOfExpirationTimeEvent;
 
