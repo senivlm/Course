@@ -83,7 +83,7 @@ namespace Course.Task11
                         case 2:
                             filePath = UserInterface.GetStringFromConsole("повний шлях до файлу");
                             if (File.Exists(filePath))
-                            {
+                            {//треба обговорити цю ідею. Подумайте.як уникнути goto
                                 goto Start;
                             }
                             else
