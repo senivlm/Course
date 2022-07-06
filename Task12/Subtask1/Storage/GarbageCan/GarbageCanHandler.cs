@@ -22,7 +22,7 @@ namespace Course.Task12
         }
 
         public void AddProduct(string itemInfo)
-        {
+        {//Для загальності клас UserInterFACE МАВ БИ БУТИ  абстрактним або краще interface-ом з методом інформування, але ще краще інформування не включати в цей метод!!! можу уточнити детальніше
             UserInterface.WriteOnConsole($"Item added to Garbage Can {itemInfo}");
             FileInteract.WriteToFile(pathToGarbageCan, itemInfo + "\n");
             items.Add(itemInfo);
