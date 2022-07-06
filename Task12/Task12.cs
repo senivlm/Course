@@ -11,7 +11,8 @@ namespace Course.Task12
         public static void Start()
         {
             //Menu a = new();
-            Console.WriteLine(Calculator.Calculate("3 - 1"));
+            Console.WriteLine(Calculator.Calculate("12 + 2 * ( ( 3 * 4 ) + ( 10 / 5 ) )"));
+            Console.WriteLine(Calculator.Calculate("3 + 4 * 2 / ( 1 - 5 ) ^ 2"));
         }
     }
 }

@@ -17,25 +17,36 @@ namespace Course.Task12
             Stack<char> stack = new();
             int startOfNumber = 0;
             bool isNewNumber = true;
+
+            FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", "Польський запис :\n\n");
+
+            int j = 1;
+
             for (int i = 0; i < func.Length; i++)
             {
+                string number = $"Step {j} : ";
                 if (!char.IsDigit(func[i]))
                 {
                     if (char.IsWhiteSpace(func[i]))
                     {
                         if (isNewNumber)
                         {
+                            FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + func[startOfNumber..i] + "\n");
+                            j++;
                             exit.Push(func[startOfNumber..i]);
                             isNewNumber = false;
                         }
                     }
                     else if (func[i] == ')')
                     {
-                        exit.Push(func[startOfNumber..i]);
-                        isNewNumber = false;
+                        //result += func[startOfNumber..i] + " ";
+                        //exit.Push(func[startOfNumber..i]);
+                        //isNewNumber = false;
 
                         while (stack.Peek() != '(')
                         {
+                            FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + stack.Peek() + "\n");
+                            j++;
                             exit.Push(stack.Pop().ToString());
                         }
                         stack.Pop();
@@ -46,23 +57,35 @@ namespace Course.Task12
                     {
                         if (func[i] == '*' || func[i] == '/')
                             if (stack?.Peek() == '/' || stack?.Peek() == '*')
+                            {
+                                FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + stack.Peek() + "\n");
+                                j++;
                                 exit.Push(stack.Pop().ToString());
+                            }
                         stack.Push(func[i]);
                     }
                 }
                 else
                 {
-                    startOfNumber = i;
-                    isNewNumber = true;
-                    if (i + 1 == func.Length)
+                    if (!isNewNumber)
                     {
-                        exit.Push(func[startOfNumber..(i + 1)]);
+                        startOfNumber = i;
+                        isNewNumber = true;
+                        if (i + 1 == func.Length)
+                        {
+                            FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + func[startOfNumber..(i + 1)] + "\n");
+                            j++;
+                            exit.Push(func[startOfNumber..(i + 1)]);
+                        }
                     }
                 }
             }
 
             while (stack.Count > 0)
             {
+                string number = $"Step {j} : ";
+                FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + stack.Peek() + "\n");
+                j++;
                 exit.Push(stack.Pop().ToString());
             }
 
@@ -72,13 +95,16 @@ namespace Course.Task12
         public static double Calculate(string func)
         {
             TransformFunc(func);
+
+            FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", "\nОбчислення\n\n");
+
             return CalculateFunc();
         }
 
         private static Stack<string> Reverse()
         {
             Stack<string> result = new();
-            while(exit.Count > 0)
+            while (exit.Count > 0)
                 result.Push(exit.Pop());
 
             return result;
@@ -86,16 +112,28 @@ namespace Course.Task12
 
         private static double CalculateFunc()
         {
+            int j = 1;
             Stack<double> temp = new();
             while (exit.Count > 0)
             {
-                if (char.IsDigit(exit.Peek()[0])) temp.Push(double.Parse(exit.Pop()));
-                else DoOperation(temp);
+                string number = $"Step {j} : ";
+                if (char.IsDigit(exit.Peek()[0]))
+                {
+                    temp.Push(double.Parse(exit.Pop()));
+                    FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + temp.Peek() + "\n");
+                }
+                else
+                {
+                    FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", number + exit.Peek() + "\n");
+                    DoOperation(temp);
+                    FileInteract.WriteToFile("../../../Task12/Subtask3/Result.txt", "Exit : " + temp.Peek() + "\n");
+                }
+                j++;
             }
 
             return temp.Pop();
         }
-        
+
         private static void DoOperation(Stack<double> stack)
         {
             double temp = 0;
@@ -117,7 +155,7 @@ namespace Course.Task12
                     break;
                 case "^":
                     temp = stack.Pop();
-                    stack.Push(Math.Pow(temp, stack.Pop()));
+                    stack.Push(Math.Pow(stack.Pop(), temp));
                     break;
                 case "cos":
                     stack.Push(Math.Cos(stack.Pop()));

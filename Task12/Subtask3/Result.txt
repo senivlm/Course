@@ -1,0 +1,65 @@
+﻿Польський запис :
+
+Step 1 : 12
+Step 2 : 2
+Step 3 : 3
+Step 4 : 4
+Step 5 : *
+Step 6 : 10
+Step 7 : 5
+Step 8 : /
+Step 9 : +
+Step 10 : *
+Step 11 : +
+
+Обчислення
+
+Step 1 : 12
+Step 2 : 2
+Step 3 : 3
+Step 4 : 4
+Step 5 : *
+Exit : 12
+Step 6 : 10
+Step 7 : 5
+Step 8 : /
+Exit : 2
+Step 9 : +
+Exit : 14
+Step 10 : *
+Exit : 28
+Step 11 : +
+Exit : 40
+
+Польський запис :
+
+Step 1 : 3
+Step 2 : 4
+Step 3 : 2
+Step 4 : *
+Step 5 : 1
+Step 6 : 5
+Step 7 : -
+Step 8 : 2
+Step 9 : ^
+Step 10 : /
+Step 11 : +
+
+Обчислення
+
+Step 1 : 3
+Step 2 : 4
+Step 3 : 2
+Step 4 : *
+Exit : 8
+Step 5 : 1
+Step 6 : 5
+Step 7 : -
+Exit : -4
+Step 8 : 2
+Step 9 : ^
+Exit : 16
+Step 10 : /
+Exit : 0,5
+Step 11 : +
+Exit : 3,5
