@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Course.Task12
 {
     class Menu
-    {
+    {//Чому public
         public GarbageCanHandler garbageCan;
         public Storage storage;
 
@@ -23,7 +23,7 @@ namespace Course.Task12
             switch (userInput)
             {
                 case 1:
-                    storage = new();
+                    storage = new();// краще винести перед switch
                     storage.OutOfExpirationTimeEvent += garbageCan.AddProduct;
                     storage.AddFromFile(UserInterface.GetFilePath());
                     break;
