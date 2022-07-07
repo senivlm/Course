@@ -1,0 +1,36 @@
+﻿[Normal] - Askel : 35 обслужений касою за наступними координатами 0,5
+Черга: 
+[Pensioner] - Tany : 94 обслужений касою за наступними координатами 0,2
+Черга: 
+[Pensioner] - Yor : 66 обслужений касою за наступними координатами 0,8
+Черга: ([Pensioner] - Tany : 70, Pensioner) 
+[Invalidity] - Gerald : 16 обслужений касою за наступними координатами 0,2
+Черга: 
+[Invalidity] - Yenifer : 32 обслужений касою за наступними координатами 0,5
+Черга: ([Normal] - Loid : 11, Normal) 
+[Pensioner] - Tany : 70 обслужений касою за наступними координатами 0,8
+Черга: 
+[Invalidity] - Tany : 41 обслужений касою за наступними координатами 0,2
+Черга: 
+[Invalidity] - Tris : 98 обслужений касою за наступними координатами 0,5
+Черга: ([Normal] - Loid : 11, Normal) 
+[Invalidity] - Yor : 57 обслужений касою за наступними координатами 0,8
+Черга: ([Pensioner] - Loid : 75, Pensioner) ([Pensioner] - Yenifer : 96, Pensioner) 
+[Normal] - Any : 33 обслужений касою за наступними координатами 0,2
+Черга: 
+[Pensioner] - Loid : 75 обслужений касою за наступними координатами 0,8
+Черга: ([Pensioner] - Yenifer : 96, Pensioner) 
+[Invalidity] - Any : 67 обслужений касою за наступними координатами 0,5
+Черга: ([Normal] - Yor : 29, Normal) ([Normal] - Loid : 11, Normal) 
+[Normal] - Loid : 32 обслужений касою за наступними координатами 0,2
+Черга: 
+[Pensioner] - Yenifer : 96 обслужений касою за наступними координатами 0,8
+Черга: ([Normal] - Yenifer : 24, Normal) 
+[Invalidity] - Gerald : 20 обслужений касою за наступними координатами 0,5
+Черга: ([Invalidity] - Loid : 48, Invalidity) ([Normal] - Loid : 11, Normal) ([Normal] - Yor : 29, Normal) 
+[Invalidity] - Yor : 18 обслужений касою за наступними координатами 0,2
+Черга: 
+[Invalidity] - Loid : 48 обслужений касою за наступними координатами 0,5
+Черга: ([Pensioner] - Askel : 79, Pensioner) ([Normal] - Loid : 11, Normal) ([Normal] - Yor : 29, Normal) 
+[Invalidity] - Tris : 15 обслужений касою за наступними координатами 0,8
+Черга: ([Pensioner] - Tany : 94, Pensioner) ([Normal] - Yenifer : 24, Normal) 
