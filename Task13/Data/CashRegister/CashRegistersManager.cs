@@ -56,14 +56,14 @@ namespace Course.Task13
         }
 
         public CashRegister GetCashRegisterWhithLowestQueue()
-        {
+        {// Чарівні константи!
             int numberOfPersons = 200;
             bool isSimilarsQueuens = true;
             double key = 0;
             foreach (var cashRegister in cashRegisters.Values)
             {
                 if (cashRegister.isClosed)
-                {
+                {// Чарівні константи!
                     if (cashRegister.isClosedByLimite && cashRegister.Count <= limit / 2)
                     {
                         cashRegister.isClosed = false;
@@ -87,7 +87,7 @@ namespace Course.Task13
         }
 
         public CashRegister GetClosestCashResister(double coord)
-        {
+        {// Чарівні константи!
             double closestResult = 500;
             double key = 0;
             foreach (double coordOfCR in cashRegisters.Keys)
