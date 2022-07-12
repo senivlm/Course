@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// Передбачалось, що переповнення - це подія, для якої запропонований в умові задачі обробник.
+//Якщо використовувати потоки, то  чому, власне, 2? 
 namespace Course.Task13
 {
     class CashRegistersManager
