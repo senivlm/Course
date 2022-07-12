@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 namespace Course.Task12
 {
     class Calculator
-    {
+    {// чому така структура використана для поля. Є проблеми з проектуванням. Розкажу.
         private static Stack<string> exit;
 
         private static void TransformFunc(string func)
         {
             exit = new();
+            //Операції не обов'язково є одним символом. Краще одразу припустити, що це може бути стрічка
             Stack<char> stack = new();
             int startOfNumber = 0;
             bool isNewNumber = true;
