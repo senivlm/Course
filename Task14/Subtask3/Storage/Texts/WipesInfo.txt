@@ -1,0 +1,3 @@
+﻿Wipes1, 15, 10, Dry
+Wipes2, 21, 200, Wet
+Wipes3, 5, 100, Screens

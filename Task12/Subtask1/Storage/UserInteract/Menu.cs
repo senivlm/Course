@@ -8,12 +8,12 @@ namespace Course.Task12
 {
     class Menu
     {
-        public GarbageCanHandler garbageCan;
-        public Storage storage;
+        private GarbageCanHandler garbageCan;
+        private Storage storage;
 
         private Storage CreateStorage()
         {
-            Storage storage;
+            Storage storage = new();
             string interacts = "Можливостi створення складу\n" +
                 "1. Додати продукти з файлу\n" +
                 "2. Додати продукти у режимi дiалогу\n" +
@@ -23,17 +23,14 @@ namespace Course.Task12
             switch (userInput)
             {
                 case 1:
-                    storage = new();
                     storage.OutOfExpirationTimeEvent += garbageCan.AddProduct;
                     storage.AddFromFile(UserInterface.GetFilePath());
                     break;
                 case 2:
-                    storage = new();
                     storage.OutOfExpirationTimeEvent += garbageCan.AddProduct;
                     ProductUserInterface.AddProductsToStorage(storage);
                     break;
                 case 3:
-                    storage = new();
                     storage.OutOfExpirationTimeEvent += garbageCan.AddProduct;
                     break;
                 default:

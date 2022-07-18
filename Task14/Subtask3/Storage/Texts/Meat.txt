@@ -1,0 +1,3 @@
+﻿Meat1, 14, 1.08.2022, 36, Low, Chicken
+Meat2, 51, 1.08.2024, 24, Medium, Pork
+Meat3, 99, 1.08.2025, 10, Prime, Mutton

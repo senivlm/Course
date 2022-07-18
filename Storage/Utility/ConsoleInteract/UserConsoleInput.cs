@@ -5,54 +5,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Course.Task12.Subtask2
+namespace Course.Storage
 {
-    static class UserInterface
+    class UserConsoleInput
     {
         private static string startOfMessage = "Введiть наступну iнформацiю: ";
+        private const int numberOfAttempts = 5;
 
-        public static string[] GetSplitedStringFromConsole(int numberOfParts, string message)
-        {
-            string[] result;
-
-            do
-            {
-                Console.WriteLine(startOfMessage + message);
-                result = Console.ReadLine().Split();
-            } while (result.Length != numberOfParts);
-
-            return result;
-        }
-
-        public static DateTime GetDateTimeFromConsole(string message, int numberOfAttempts = 5)
+        public static DateTime GetDateTimeFromConsole(string message, int numberOfAttempts = numberOfAttempts)
         {
             DateTime result = default;
             for (int i = 0; i < numberOfAttempts; i++)
             {
-                Console.WriteLine(startOfMessage + message);
+                Console.Write(startOfMessage + message + " ");
                 var str = Console.ReadLine();
                 if (DateTime.TryParse(str, out result)) break;
             }
             return result;
         }
 
-        public static string GetStringFromConsole(string message, int numberOfAttempts = 5)
+        public static double GetDoubleFromConsole(string message, int numberOfAttempts = numberOfAttempts)
+        {
+            double result = 0;
+            for (int i = 0; i < numberOfAttempts; i++)
+            {
+                Console.Write(startOfMessage + message + " ");
+                if (double.TryParse(Console.ReadLine(), out result))
+                    break;
+            }
+
+            return result;
+        }
+
+        public static string GetFilePath(string message, int numberOfAttempts = numberOfAttempts)
         {
             string result = "";
             for (int i = 0; i < numberOfAttempts; i++)
             {
                 Console.WriteLine(startOfMessage + message);
-                result = Console.ReadLine();
-                if (!string.IsNullOrEmpty(result)) break;
-            }
-            return result;
-        }
-
-        public static string GetFilePath()
-        {
-            while (true)
-            {
-                string result = "";
                 Console.WriteLine("Якщо файл знаходиться у даній папкі натисніть 1, в іншому випадку 2, для виходу іншу цифру");
                 int userInput = GetIntFromConsole("номер дії");
                 switch (userInput)
@@ -71,43 +61,46 @@ namespace Course.Task12.Subtask2
                     return result;
                 }
             }
+            return null;
         }
 
-        public static int GetIntFromConsole(string message)
+        public static int GetIntFromConsole(string message, int numberOfAttempts = numberOfAttempts)
         {
             int result = 0;
-            do
-            {
-                Console.WriteLine(startOfMessage + message);
-                if (int.TryParse(Console.ReadLine(), out result))
-                    break;
-            } while (true);
-
-            return result;
-        }
-
-        public static float GetFloatFromConsole(string message, int numberOfAttempts)
-        {
-            float result = 0;
             for (int i = 0; i < numberOfAttempts; i++)
             {
                 Console.Write(startOfMessage + message + " ");
-                if (float.TryParse(Console.ReadLine(), out result))
+                if (int.TryParse(Console.ReadLine(), out result))
                     break;
             }
+            return result;
+        }
+
+        public static string[] GetSplitedStringFromConsole(string message, int numberOfParts, int numberOfAttempts = numberOfAttempts)
+        {
+            string[] result;
+            int i = 0;
+
+            do
+            {
+                Console.Write(startOfMessage + message + " ");
+                result = Console.ReadLine().Split();
+                i++;
+            } while (result.Length != numberOfParts || i == numberOfAttempts);
 
             return result;
         }
 
-        public static void WriteListOnConsole<T>(List<T> list)
+        public static string GetStringFromConsole(string message, int numberOfAttempts = numberOfAttempts)
         {
-            foreach(T line in list)
-                Console.WriteLine(line.ToString());
-        }
-
-        public static void WriteOnConsole(string str)
-        {
-            Console.WriteLine(str);
+            string result = "";
+            for (int i = 0; i < numberOfAttempts; i++)
+            {
+                Console.Write(startOfMessage + message + " ");
+                result = Console.ReadLine();
+                if (!string.IsNullOrEmpty(result)) break;
+            }
+            return result;
         }
     }
 }

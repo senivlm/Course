@@ -5,11 +5,12 @@ using System.IO;
 
 namespace Course.Task12
 {
+    public delegate void OutOfExpirationTime(string message);
+
     class Storage
     {
         private List<Product> products;
 
-        public delegate void OutOfExpirationTime(string message);
         public event OutOfExpirationTime OutOfExpirationTimeEvent;
 
         #region Constructors
@@ -112,7 +113,7 @@ namespace Course.Task12
 
         public void AddProduct(Product product)
         {
-            if(product.ExpirationDate < DateTime.Today)
+            if (product.ExpirationDate < DateTime.Today)
             {
                 OutOfExpirationTimeEvent?.Invoke(product.ToString());
                 return;

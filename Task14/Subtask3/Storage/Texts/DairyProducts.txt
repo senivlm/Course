@@ -1,0 +1,3 @@
+﻿DairyProduct1, 14, 1.08.2022, 36
+DairyProduct2, 4, 1.10.2022, 6
+DairyProduct3, 93, 15.08.2022, 91
