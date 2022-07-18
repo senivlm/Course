@@ -1,4 +1,4 @@
-﻿using Course.Task9;
+﻿using Course.Task14.Subtask2;
 using Course.Task14;
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Subtask3.Start();
+        Subtask2.Start();
+        //Subtask3.Start();
     }
 }
