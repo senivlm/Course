@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Course.Task14
 {
-    internal class AbstractStationeryProduct : AbstractProduct, IIndividuallyProduct
+    internal class AbstractStationeryProduct : AbstractProduct, IStationeryProduct
     {
         private int count;
 
