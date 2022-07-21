@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Course.Task14.Subtask2
-{
+{//Все добре. Але я б шлях не робила параметром за замовчуванням у цьому випадку.
     public static class StorageXMLSerializatorDeserializator
     {
         private const string pathToFile = "../../../Task14/Subtask2/Storage/SerializationInfo/StorageInfo.xml";
